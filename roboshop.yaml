@@ -1,4 +1,4 @@
-- names: roboshop instances management
+- name: roboshop instances management
   hosts: local
   connection: local
   vars:
@@ -19,4 +19,3 @@
   - name: print output
     debug:
       msg: "{{ ec2_output }}"
-          
