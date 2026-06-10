@@ -1,5 +1,5 @@
 - name: roboshop instances management
-  hosts: local
+  hosts: localhost
   connection: local
   vars:
     instances: ["mongodb", "redis", "mysql", "rabbitmq",]
@@ -19,4 +19,3 @@
   - name: print output
     debug:
       msg: "{{ ec2_output }}" 
-            
