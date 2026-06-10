@@ -62,11 +62,11 @@
       record: "{{ item }}.{{ domain_name}}"
       ttl: 1
       type: A
-  loop: "{{ instances }}"
-  when: action == "delete"
+    loop: "{{ instances }}"
+    when: action == "delete"
  
- - name: delet r53 record frontend
-   amazon.aws.route53:
+  - name: delete r53 record for frontend
+    amazon.aws.route53:
      state: absent
      zone: "{{ domain_name }}"
      recoed: "{{ domain_name }}"
