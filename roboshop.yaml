@@ -4,7 +4,6 @@
   vars:
     instances: ["mongodb", "redis", "mysql", "rabbitmq"]
     image_id: ami-0220d79f3f480ecf5
-    
   tasks:
   - name: create ec2 instances
     amazon.aws.ec2_instance:
@@ -13,7 +12,7 @@
       image_id: "{{ image id }}"
       security_groups:
       - "roboshop-{{ item }}"
-      - roboshop-common
+      -  roboshop-common
     loop: "{{ instances }}"
     register: ec2_output
 
