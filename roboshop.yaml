@@ -27,7 +27,7 @@
   #   loop: "{{ ec2_output.results }}"
 
   - name: create r53 records
-    amazon.aws.ec2_instance:
+    amazon.aws.rout53:
       state: present
       zone: "{{ domain_name }}"
       record: "{{ item.item }}.{{ domain_name }}" #mongodb.arrud.online  
@@ -38,7 +38,7 @@
     loop: "{{ ec2_output.results }}"
 
   - name: create r53 record for frontend
-    amazon.aws.ec2_instance:
+    amazon.aws.rout53:
       state: present
       zone: "{{ domain_name }}"
       record: "{{ domain_name }}" #arrud.online 
