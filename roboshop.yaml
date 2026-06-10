@@ -2,7 +2,7 @@
   hosts: localhost
   connection: local
   vars:
-    instances: ["mongodb", "redis", "mysql", "rabbitmq"]
+    instances: ["mongodb", "redis", "mysql", "rabbitmq", "frontend"]
     image_id: ami-0220d79f3f480ecf5
     domain_name: arrud.online
     action: create
@@ -65,5 +65,14 @@
   loop: "{{ instances }}"
   when: action == "delete"
  
-
-   
+- name: delet r53 record frontend
+  amazon.aws.route53:
+    state: absent
+    zone: "{{ domain_name }}"
+    recoed: "{{ domain_name }}"
+    ttl: 1
+    type: A
+  loop: "{{ instances }}"
+  when:
+   - action == "delete"
+   - item == "frontend"
