@@ -67,12 +67,20 @@
  
   - name: delete r53 record for frontend
     amazon.aws.route53:
-     state: absent
-     zone: "{{ domain_name }}"
-     recoed: "{{ domain_name }}"
-     ttl: 1
-     type: A
-  loop: "{{ instances }}"
-  when:
-   - action == "delete"
-   - item == "frontend"
+      state: absent
+      zone: "{{ domain_name }}"
+      recoed: "{{ domain_name }}"
+      ttl: 1
+      type: A
+    loop: "{{ instances }}"
+    when:
+    - action == "delete"
+    - item == "frontend"
+
+  - name: delete ec2 instances
+    amazon.aws.ec2_instance:
+      state: absent
+      name: "roboshop-{{ item }}"
+      wait: false
+    loop: "{{ instances }}"
+    when: action == "delete"
