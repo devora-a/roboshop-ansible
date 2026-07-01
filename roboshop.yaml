@@ -24,7 +24,7 @@
   #   debug:
   #     msg: "{{ ec2_output }}"
   
-  - name: create route53 records
+  - name: create route53 record
     debug:
       msg: "Instance Name: {{ item.item }} privateIP: {{ item.instances[0].private_ip_address }}"
     loop: "{{ ec2_output.results }}"
