@@ -2,7 +2,7 @@
   hosts: localhost
   connection: local
   vars:
-    instances: ["user"] #["mongodb", "redis", "mysql", "rabbitmq", "frontend", "catalogue", "user", "cart", "shipping", "payment"]
+    instances: ["user-1"] #["mongodb", "redis", "mysql", "rabbitmq", "frontend", "catalogue", "user", "cart", "shipping", "payment"]
     image_id: ami-0220d79f3f480ecf5
     domain_name: arrud.online
     action: create
